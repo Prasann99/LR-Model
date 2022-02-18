@@ -1,0 +1,1 @@
+The Prgram is developed to classify an algorithm to predicct the diagnostic and cross validation to identify the best accuracy of the LR model selected.
