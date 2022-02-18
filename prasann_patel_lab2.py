@@ -153,3 +153,25 @@ y_pred = Ran.predict(X_test)
 accuracy = accuracy_score(y_test,y_pred)
 print("Improved Accuracy on Test Data:",accuracy)
 
+#Descision Tree
+
+tree = DecisionTreeClassifier()
+parameters = {'min_samples_split': [2,3,4], 
+              'min_samples_leaf':[2,3,4,5],
+              'max_features': ['sqrt', 'auto']}
+
+
+tree_cv = GridSearchCV(tree, parameters, cv=5)
+
+tree_cv.fit(X_train, y_train)
+
+
+print("Best Score is ",tree_cv.best_score_)
+print("Best Estinator is ", tree_cv.best_estimator_)
+print("Best Parametes are", tree_cv.best_params_)
+
+tree = DecisionTreeClassifier(max_features = 'auto', min_samples_leaf=5, min_samples_split=2)
+tree.fit(X_train, y_train)
+y_pred = tree_cv.predict(X_test)
+accuracy_dt = accuracy_score(y_test,y_pred)
+print("Improved Accuracy on Test Data:",accuracy_dt)
